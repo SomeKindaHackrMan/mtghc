@@ -55,7 +55,6 @@ def fetch_repos(query, max_repos):
         else:
             print_verbose(f"Error fetching page {page}: {response.status_code} - {response.text}")
             break
-    
     print_verbose(f"Total fetched repositories: {len(repos)} for query '{query}'.")
     return repos
 
@@ -94,12 +93,10 @@ def create_detected_folder():
 def log_findings(repo_name, repo_owner, repo_url, file_path, results):
     global file_counter
     create_detected_folder()
-    
     for i, (line_no, code) in enumerate(results, start=1):
         with file_counter_lock:
             detected_file = os.path.join('Detected', f'detected_{file_counter}.txt')
             file_counter += 1
-        
         with open(detected_file, 'w') as f:
             f.write(f"Repository: {repo_name}\n")
             f.write(f"Owner: {repo_owner}\n")
