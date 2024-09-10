@@ -49,8 +49,8 @@ def fetch_repos(query, max_repos):
                 repos = repos[:max_repos]
         elif response.status_code == 403: # Rate limit code
             print_verbose(f"Error fetching page {page}: {response.status_code} - {response.text}")
-            print_verbose("Rate limit exceeded. Waiting for 30 seconds before retrying...")
-            time.sleep(30)  
+            print_verbose("Rate limit exceeded. Waiting for 60 seconds before retrying...")
+            time.sleep(60)  
             continue  
         else:
             print_verbose(f"Error fetching page {page}: {response.status_code} - {response.text}")
